@@ -52,6 +52,18 @@ app.get('/users', async (req, res) => {
   }
 });
 
+app.get('/health', async (req, res) => {
+  try {
+    res.status(200).send('working');
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Server Error');
+  }
+});
+
+
+
+
 app.post('/users', async (req, res) => {
   try {
     const user = await User.create(req.body);
